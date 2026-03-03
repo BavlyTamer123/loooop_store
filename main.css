@@ -179,6 +179,12 @@ nav ul li a:hover {
     margin-top: 8px;
 }
 
+.discount {
+    text-decoration: line-through;
+    color: #7D4427;
+    /* اختياري: لجعل اللون باهت قليلاً */
+}
+
 .product-details h3 {
     color: var(--logo-brown);
 }
@@ -214,31 +220,165 @@ body {
     background-size: cover;
 
 }
+
 /* تنسيق الموبايل (للشاشات الأصغر من 768 بكسل) */
 @media (max-width: 768px) {
     .products-wrapper {
-        display: grid; /* تحويله من Flex إلى Grid */
-        grid-template-columns: repeat(2, 1fr); /* عرض عنصرين في الصف الواحد */
-        gap: 10px; /* تقليل المسافة بين العناصر لتناسب الشاشة */
-        overflow-x: visible; /* إلغاء التمرير الأفقي */
+        display: grid;
+        /* تحويله من Flex إلى Grid */
+        grid-template-columns: repeat(2, 1fr);
+        /* عرض عنصرين في الصف الواحد */
+        gap: 10px;
+        /* تقليل المسافة بين العناصر لتناسب الشاشة */
+        overflow-x: visible;
+        /* إلغاء التمرير الأفقي */
         padding: 10px;
     }
 
     .product-item {
-        min-width: unset; /* إلغاء الحد الأدنى للعرض ليتناسب مع الشبكة */
+        min-width: unset;
+        /* إلغاء الحد الأدنى للعرض ليتناسب مع الشبكة */
         padding: 10px;
     }
 
     .img-box {
-        height: 200px; /* تقليل ارتفاع الصورة ليناسب عرض الموبايل */
+        height: 200px;
+        /* تقليل ارتفاع الصورة ليناسب عرض الموبايل */
     }
 
     .product-details h3 {
-        font-size: 0.9rem; /* تصغير الخط قليلاً ليناسب المساحة */
+        font-size: 0.9rem;
+        /* تصغير الخط قليلاً ليناسب المساحة */
     }
 
     /* إخفاء نقط التمرير الخاصة بالمنتجات في الموبايل لأننا لم نعد نستخدم السلايدر */
     .product-dots {
         display: none;
     }
+}
+
+/* تصميم الشريط نفسه (الخلفية والأبعاد) */
+.announcement-bar {
+    background-color: turquoise;
+    /* اللون التركواز */
+    color: #000000;
+    /* لون النص أسود ليناسب التركواز */
+    padding: 12px 0;
+    /* مساحة فارغة أعلى وأسفل النص */
+    overflow: hidden;
+    /* لإخفاء النص عندما يخرج عن حدود الشاشة */
+    white-space: nowrap;
+    /* لمنع النص من النزول لسطر جديد */
+    width: 100%;
+    /* عرض الشريط 100% من الشاشة */
+    font-family: Arial, sans-serif;
+    /* نوع الخط */
+    font-weight: bold;
+    /* خط عريض */
+    font-size: 16px;
+    /* حجم الخط */
+    position: relative;
+}
+
+/* إعدادات حركة النص */
+.scrolling-text {
+    display: inline-block;
+    padding-left: 100%;
+    /* يبدأ النص من خارج الشاشة على اليمين */
+    animation: scroll-left 100s linear infinite;
+    /* 15s هي سرعة الحركة، يمكنك تقليلها لتسريع النص أو زيادتها لإبطائه */
+}
+
+/* كود الحركة من اليمين لليسار */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* ===== Product Hover Animation ===== */
+
+.product-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* تأثير الصورة */
+.img-box img {
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.product-item:hover .img-box img {
+    transform: scale(1.08);
+    filter: brightness(85%);
+}
+
+/* الاوفرلاي */
+.hover-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: bottom 0.4s ease;
+}
+
+.product-item:hover .hover-overlay {
+    bottom: 20px;
+}
+
+/* الزر */
+.choose-btn {
+    background: #48B0AD;
+    /* أخضر فوسفوري قريب من الصورة اللي بعتّها */
+    border: none;
+    padding: 14px 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.choose-btn:hover {
+    background: var(--logo-teal);
+    color: white;
+}
+
+/* تجهيز الأنيميشن */
+.product-details h3,
+.product-price {
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease,
+        color 0.3s ease;
+}
+
+/* نخليهم في وضع طبيعي */
+.product-details h3 {
+    transform: translateY(0);
+}
+
+.product-price {
+    transform: translateY(0);
+}
+
+/* عند الـ Hover على الكارت */
+.product-item:hover .product-details h3 {
+    transform: translateY(-3px);
+    color: var(--logo-teal);
+}
+
+.product-item:hover .product-price {
+    transform: translateY(-3px);
+    opacity: 0.8;
 }
