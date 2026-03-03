@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Urban crochet sweater Details - LOOP STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tajawal:wght@400;700&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-dark-brown: #1a0f0a;
+            --accent-teal: #48B0AD;
+            --accent-brown: #7D4427;
+            --text-cream: #f4f1e8;
+            --logo-brown: #7D4427;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark-brown);
+            color: var(--text-cream);
+            overflow-x: hidden;
+        }
+
+        .brand-header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-brown);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 35px;
+            color: var(--accent-teal);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .brand-nav a {
+            text-decoration: none;
+            color: var(--text-cream);
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        .cart-icon {
+            text-decoration: none;
+            color: var(--text-cream);
+            font-size: 24px;
+        }
+
+        #cart-count {
+            background: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            font-size: 12px;
+            padding: 2px 7px;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            font-weight: bold;
+        }
+
+        .product-page {
+            display: flex;
+            height: calc(100vh - 70px);
+            flex-wrap: wrap;
+        }
+
+        /* --- تعديل تثبيت الأبعاد هنا --- */
+        .product-gallery {
+            flex: 1.2;
+            min-width: 50%;
+            background-color: #48B0AD;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 100%; /* ضمان ثبات ارتفاع الحاوية */
+        }
+
+        #mainImage {
+            /* تثبيت العرض والارتفاع لمنع التمدد والانكماش */
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 1px solid var(--accent-brown);
+            transition: opacity 0.3s ease-in-out;
+        }
+        /* ---------------------------- */
+
+        .arrow {
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--accent-teal);
+            border: 1px solid var(--accent-brown);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            font-size: 20px;
+        }
+
+        .next { left: 20px; }
+        .prev { right: 20px; }
+
+        .product-details {
+            flex: 0.8;
+            min-width: 40%;
+            padding: 40px 5%;
+            background-image: url('fe97df0b-f081-4a4c-a264-b45532ffea62.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .brand-name, .productTitle, .price-tag, .options-group span, .color-title {
+            color: #7D4427;
+            font-weight: bold;
+        }
+
+        h2.productTitle { font-size: 35px; margin-bottom: 10px; }
+        .price-tag { font-size: 26px; margin-bottom: 25px; }
+
+        .radio-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .radio-buttons input { display: none; }
+        .radio-buttons label {
+            background-color: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            border: 2px solid var(--accent-teal);
+            padding: 10px 25px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .radio-buttons input:checked+label {
+            background-color: var(--accent-brown);
+            border-color: var(--accent-brown);
+            color: var(--text-cream);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .colors { display: flex; gap: 15px; margin-top: 10px; }
+        .color {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .color.active {
+            border-color: var(--accent-brown);
+            transform: scale(1.1);
+        }
+
+        .mood {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-cream);
+            background: rgba(125, 68, 39, 0.9);
+            padding: 4px 12px;
+            border-radius: 5px;
+            display: inline-block;
+            text-shadow: none;
+            font-weight: normal;
+        }
+
+        .add-btn {
+            background-color: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            border: none;
+            padding: 18px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--accent-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @keyframes shake {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2) rotate(10deg); }
+            50% { transform: scale(1.2) rotate(-10deg); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .product-page { flex-direction: column; height: auto; }
+            .product-gallery { height: 50vh; min-width: 100%; }
+            .product-details { min-width: 100%; padding: 30px 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="brand-header">
+        <h1 class="logo">LOOP</h1>
+        <nav class="brand-nav">
+            <a href="index.html">Home</a>
+            <a href="#">Women</a>
+            <a href="#">Men</a>
+        </nav>
+        <div class="cart-wrapper" id="cartWrapper">
+            <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        </div>
+    </header>
+
+    <main class="product-page">
+        <section class="product-gallery">
+            <button class="arrow next" onclick="changeImage(-1)">&#10094;</button>
+            <img id="mainImage" src="11baf817f420e7749714c6d56e9c8b37.jpg" alt="Product">
+            <button class="arrow prev" onclick="changeImage(1)">&#10095;</button>
+        </section>
+
+        <section class="product-details">
+            <span class="brand-name">WINTER COLLECTION '26</span>
+            <h2 class="productTitle" id="productTitle">Urban crochet sweater</h2>
+            <p class="price-tag">1400 EGP</p>
+
+            <div class="options-group">
+                <span> SIZE</span>
+                <div class="radio-buttons">
+                    <input type="radio" name="size" id="s" value="S"> <label for="s">S</label>
+                    <input type="radio" name="size" id="m" value="M"> <label for="m">M</label>
+                    <input type="radio" name="size" id="l" value="L"> <label for="l">L</label>
+                    <input type="radio" name="size" id="xl" value="XL"> <label for="xl">XL</label>
+                </div>
+            </div>
+
+            <div class="color-box">
+                <div class="color-title"> COLOR</div>
+                <div class="colors">
+                    <div class="color active" style="background:#2f2f2f" data-mood="Classic Mood"
+                        data-image="11baf817f420e7749714c6d56e9c8b37.jpg"></div>
+                    <div class="color" style="background:#7a6a5f" data-mood="Warm Mood"
+                        data-image="64fcff1d-dc60-49bc-aac0-536597c0868e.jpg"></div>
+                </div>
+                <p id="moodText" class="mood">Classic Mood</p>
+            </div>
+
+            <button class="add-btn" onclick="addToMyCart()">Add to cart</button>
+        </section>
+    </main>
+
+    <script>
+        let images = ["11baf817f420e7749714c6d56e9c8b37.jpg", "64fcff1d-dc60-49bc-aac0-536597c0868e.jpg"];
+        let currentIndex = 0;
+
+        // وظيفة موحدة لتغيير الصورة بسلاسة وثبات
+        function updateMainImage(newSrc) {
+            const img = document.getElementById('mainImage');
+            img.style.opacity = '0'; // إخفاء مؤقت
+            
+            setTimeout(() => {
+                img.src = newSrc;
+                img.onload = () => {
+                    img.style.opacity = '1'; // إظهار بعد التحميل لضمان عدم القفز
+                };
+            }, 200);
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            updateMainImage(images[currentIndex]);
+        }
+
+        const colorElements = document.querySelectorAll('.color');
+        const moodText = document.getElementById('moodText');
+
+        colorElements.forEach(color => {
+            color.addEventListener('click', () => {
+                colorElements.forEach(c => c.classList.remove('active'));
+                color.classList.add('active');
+                moodText.textContent = color.dataset.mood;
+                updateMainImage(color.dataset.image);
+            });
+        });
+
+        function updateCartNumber() {
+            let cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            document.getElementById('cart-count').innerText = cartItems.length;
+        }
+        updateCartNumber();
+
+        function addToMyCart() {
+            const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
+            const activeColor = document.querySelector('.color.active');
+            const colorMood = activeColor ? activeColor.dataset.mood : "Not Selected";
+
+            if (!selectedSize) {
+                alert("Please, Choose The Size First");
+                return;
+            }
+
+            const imgElement = document.getElementById('mainImage');
+            const cartIcon = document.getElementById('cartWrapper');
+            const flyingImg = imgElement.cloneNode();
+            const rect = imgElement.getBoundingClientRect();
+            const cartRect = cartIcon.getBoundingClientRect();
+
+            Object.assign(flyingImg.style, {
+                position: 'fixed',
+                top: rect.top + 'px',
+                left: rect.left + 'px',
+                width: rect.width + 'px',
+                height: rect.height + 'px',
+                zIndex: '5000',
+                transition: 'all 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)',
+                borderRadius: '10px',
+                pointerEvents: 'none',
+                objectFit: 'contain'
+            });
+
+            document.body.appendChild(flyingImg);
+
+            requestAnimationFrame(() => {
+                flyingImg.style.top = cartRect.top + 'px';
+                flyingImg.style.left = cartRect.left + 'px';
+                flyingImg.style.width = '20px';
+                flyingImg.style.height = '20px';
+                flyingImg.style.transform = 'rotate(720deg)';
+                flyingImg.style.opacity = '0.3';
+            });
+
+            let cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            cartItems.push({
+                name: document.getElementById('productTitle').innerText,
+                price: "1400 EGP",
+                size: selectedSize,
+                color: colorMood,
+                image: imgElement.src
+            });
+            localStorage.setItem('myCart', JSON.stringify(cartItems));
+
+            setTimeout(() => {
+                flyingImg.remove();
+                cartIcon.style.animation = "shake 0.5s ease";
+                updateCartNumber();
+                setTimeout(() => cartIcon.style.animation = "", 500);
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>

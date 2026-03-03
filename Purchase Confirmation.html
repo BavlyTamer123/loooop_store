@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>تأكيد الطلب - LOOP STORE</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tajawal:wght@400;700&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-dark-brown: #1a0f0a;
+            --accent-teal: #48B0AD;
+            --accent-brown: #7D4427;
+            --text-cream: #f4f1e8;
+        }
+
+        body {
+            background-color: var(--bg-dark-brown);
+            color: var(--text-cream);
+            font-family: 'Tajawal', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .checkout-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--accent-brown);
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 40px;
+            text-align: center;
+            color: var(--accent-teal);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-teal);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--accent-brown);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent-teal);
+            border: none;
+            color: var(--bg-dark-brown);
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .confirm-btn:hover:not(:disabled) {
+            background-color: var(--accent-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .confirm-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-container">
+        <h1>ORDER DATA</h1>
+        <form id="orderForm">
+            <div class="form-group"><label>الاسم ثلاثي</label><input type="text" id="fullName" required></div>
+            <div class="form-group">
+                <label>المحافظة</label>
+<select id="governorate" required>
+    <option value="" disabled selected>اختر محافظتك</option>
+    <option value="أسوان">أسوان</option>
+    <option value="أسيوط">أسيوط</option>
+    <option value="الأقصر">الأقصر</option>
+    <option value="الإسكندرية">الإسكندرية</option>
+    <option value="الإسماعيلية">الإسماعيلية</option>
+    <option value="البحر الأحمر">البحر الأحمر</option>
+    <option value="البحيرة">البحيرة</option>
+    <option value="الجيزة">الجيزة</option>
+    <option value="الدقهلية">الدقهلية</option>
+    <option value="السويس">السويس</option>
+    <option value="الشرقية">الشرقية</option>
+    <option value="الغربية">الغربية</option>
+    <option value="الفيوم">الفيوم</option>
+    <option value="القاهرة">القاهرة</option>
+    <option value="القليوبية">القليوبية</option>
+    <option value="المنوفية">المنوفية</option>
+    <option value="المنيا">المنيا</option>
+    <option value="الوادي الجديد">الوادي الجديد</option>
+    <option value="بني سويف">بني سويف</option>
+    <option value="بورسعيد">بورسعيد</option>
+    <option value="جنوب سيناء">جنوب سيناء</option>
+    <option value="دمياط">دمياط</option>
+    <option value="سوهاج">سوهاج</option>
+    <option value="شمال سيناء">شمال سيناء</option>
+    <option value="قنا">قنا</option>
+    <option value="كفر الشيخ">كفر الشيخ</option>
+    <option value="مطروح">مطروح</option>
+</select>
+            </div>
+            <div class="form-group"><label>العنوان بالتفصيل</label><input type="text" id="address" required></div>
+            <div class="form-group"><label>رقم التليفون</label><input type="tel" id="phone" required></div>
+            <button type="submit" id="submitBtn" class="confirm-btn">تأكيد الطلب ✅</button>
+        </form>
+    </div>
+
+    <script>
+        (function () {
+            // الـ Public Key الخاص بك
+            emailjs.init("hXob7s-Ss4DLfmjCg");
+        })();
+
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "جاري الإرسال... ⏳";
+            btn.disabled = true;
+
+            const cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            let itemsSummary = cartItems.map(item => `- ${item.name} (${item.size}/${item.color})`).join("\n");
+
+            const templateParams = {
+                from_name: document.getElementById('fullName').value,
+                city: document.getElementById('governorate').value,
+                address: document.getElementById('address').value,
+                phone: document.getElementById('phone').value,
+                order_details: itemsSummary
+            };
+
+            // تم تغيير الـ Template ID إلى template_pty1wkk بناءً على صورتك الأخيرة
+            emailjs.send('service_i943yk1', 'template_pty1wkk', templateParams)
+                .then(function () {
+                    alert(`شكراً يا ${templateParams.from_name}! طلبك وصل وسنتواصل معك.`);
+                    localStorage.removeItem('myCart');
+                    window.location.href = 'index.html';
+                }, function (error) {
+                    alert("فشل الإرسال: " + JSON.stringify(error));
+                    btn.innerText = "تأكيد الطلب ✅";
+                    btn.disabled = false;
+                });
+        });
+    </script>
+</body>
+
+
+</html>
+

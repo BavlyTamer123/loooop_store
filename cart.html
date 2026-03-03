@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>سلة المشتريات - LOOP STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tajawal:wght@400;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --bg-dark-brown: #1a0f0a;
+            /* البني الداكن من الصفحة الأولى */
+            --accent-teal: #48B0AD;
+            /* التركواز */
+            --accent-brown: #7D4427;
+            /* البني الفاتح */
+            --text-cream: #f4f1e8;
+            /* الكريمي */
+        }
+
+        body {
+            background-color: var(--bg-dark-brown);
+            color: var(--text-cream);
+            font-family: 'Tajawal', sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .cart-container {
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 50px;
+            text-align: center;
+            color: var(--accent-teal);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.05);
+            /* خلفية شفافة بسيطة */
+            border: 1px solid var(--accent-brown);
+            margin-bottom: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 15px;
+            animation: fadeIn 0.5s ease;
+            transition: 0.3s;
+        }
+
+        .item-card:hover {
+            border-color: var(--accent-teal);
+            transform: scale(1.02);
+        }
+
+        .item-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 10px;
+            margin-left: 20px;
+            object-fit: cover;
+            border: 1px solid var(--accent-brown);
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-info h3 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--text-cream);
+            margin-bottom: 8px;
+        }
+
+        .item-info p {
+            margin: 5px 0;
+            color: var(--accent-teal);
+            font-size: 16px;
+        }
+
+        .price-text {
+            color: var(--accent-teal) !important;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .remove-btn {
+            background: transparent;
+            border: 1px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+
+        .total-section {
+            background: rgba(72, 176, 173, 0.1);
+            /* خلفية تركواز خفيفة جداً */
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px dashed var(--accent-teal);
+        }
+
+        #total-price {
+            font-size: 30px;
+            color: var(--text-cream);
+            font-family: 'Cairo', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--accent-teal);
+            border: none;
+            color: var(--bg-dark-brown);
+            font-weight: bold;
+            font-size: 22px;
+            font-family: 'Tajawal', sans-serif;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--accent-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: var(--accent-teal);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .empty-msg {
+            text-align: center;
+            font-size: 24px;
+            color: var(--accent-brown);
+            margin-top: 50px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart-container">
+        <h1>MY CART</h1>
+
+        <div id="cart-list">
+        </div>
+
+        <div class="total-section" id="totalSection">
+            <div id="total-price">الإجمالي: 0 EGP</div>
+            <button class="checkout-btn" onclick="location.href='Purchase Confirmation.html'">إتمام الطلب الآن</button>
+        </div>
+
+        <a href="index.html" class="back-link">← العودة للتسوق</a>
+    </div>
+
+    <script>
+        function displayCart() {
+            const cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            const listDiv = document.getElementById('cart-list');
+            const totalSection = document.getElementById('totalSection');
+
+            if (cartItems.length === 0) {
+                listDiv.innerHTML = '<p class="empty-msg">Your Cart Is Empty"</p>';
+                totalSection.style.display = 'none';
+                return;
+            }
+
+            totalSection.style.display = 'block';
+            listDiv.innerHTML = '';
+
+            let total = 0;
+            cartItems.forEach((item, index) => {
+                // تنظيف السعر من العملة لتحويله لرقم
+                const priceValue = parseFloat(item.price.replace(/[^\d.]/g, '')) || 0;
+                total += priceValue;
+
+                listDiv.innerHTML += `
+                    <div class="item-card">
+                        <img src="${item.image}">
+                        <div class="item-info">
+                            <h3>${item.name}</h3>
+                            <p>المقاس: <span style="font-family: 'Cairo'; color: white;">${item.size}</span> | اللون: ${item.color}</p>
+                            <p class="price-text">${item.price}</p>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem(${index})">حذف</button>
+                    </div>
+                `;
+            });
+            document.getElementById('total-price').innerText = `الإجمالي: ${total.toFixed(2)} EGP`;
+        }
+
+        function removeItem(index) {
+            let cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('myCart', JSON.stringify(cartItems));
+            displayCart();
+        }
+
+        // تشغيل الدالة عند تحميل الصفحة
+        window.onload = displayCart;
+    </script>
+</body>
+
+
+</html>
+

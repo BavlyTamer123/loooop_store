@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP Store</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .product-link:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="logo-item">
+                <a href="index.html">
+                    <img src="eeee5e561012-ee9d-4528-bac0-f3a2e20f7143.jpg" alt="LOOP Logo" class="main-logo">
+                </a>
+            </li>
+            <li><a href="index.html">home</a></li>
+            <li><a href="#">best seller</a></li>
+            <li><a href="cart.html">your cart</a></li>
+            <li><a href="#">categories</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-banner">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: url('77777e54da8de-0c50-4027-b748-55fc4add8546.jpg');">
+            </div>
+            <div class="slide" style="background-image: url(' 6c54449d-616b-4937-9008-f0950714ddb4.jpg');"></div>
+            <div class="slide" style="background-image: url(' a1f52abb-f542-4b10-be96-8d0d8af37b43.jpg');"></div>
+        </div>
+
+        <div class="hero-content">
+            <span class="season-tag">FW '25/26</span>
+            <div class="hero-text">
+                <h1>WINTER '25<br>EDITION</h1>
+                <!-- <a href="shop.html" class="discover-btn"> -->
+                Best seller <span>&larr;</span>
+                </a>
+            </div>
+
+            <div class="slider-dots main-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-carousel-section">
+        <!-- <div class="carousel-header">
+            <h2 class="section-title">الأكثر مبيعاً</h2>
+            <a href="#" class="view-all-link">عرض الكل</a>
+        </div> -->
+
+        <div class="products-wrapper" id="productsWrapper">
+            <a href="deeetails.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="bbb.jpg" alt="Product">
+                        <span class="unisex-tag">UNISEX</span>
+                    </div>
+                    <div class="product-details">
+                        <h3>cozy crochet sweater</h3>
+                        <p class="product-price">1400 EGP</p>
+                    </div>
+                </div>
+            </a>
+            <a href="deetails.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="Gemini_Generated_Image_s7l6i5s7l6i5s7l6~3.png" alt="Product">
+                    </div>
+                    <div class="product-details">
+                        <h3>Urban crochet sweater</h3>
+                        <p class="product-price">1400 EGP</p>
+                    </div>
+                </div>
+            </a>
+            <a href="details.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="IMG-20260208-WA0002.jpg" alt="Product">
+                        <span class="unisex-tag">UNISEX</span>
+                    </div>
+                    <div class="product-details">
+                        <h3>Midnight black crochet sweater</h3>
+                        <p class="product-price">1300 EGP</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+        <div class="slider-dots product-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+
+
+</html>
+
+
+
