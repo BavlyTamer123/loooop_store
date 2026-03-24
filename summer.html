@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOP Store</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .product-link:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- تنسيق أيقونات السوشيال ميديا الجانبية --- */
+        .social-sidebar {
+            position: fixed;
+            /* ثابتة أثناء السكرول */
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1001;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #7D4427;
+            /* اللون البني من ملف الـ CSS الخاص بك */
+            color: #F4F1E8;
+            /* اللون الكريمي للأيقونة */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #48B0AD;
+            /* اللون التركواز من ملف الـ CSS */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon:hover {
+            background-color: #48B0AD;
+            /* يتحول للتركواز عند الماوس */
+            color: #7D4427;
+            /* تتحول الأيقونة للبني */
+            transform: scale(1.1) translateX(5px);
+            border-color: #7D4427;
+        }
+
+        @media (max-width: 768px) {
+            .social-sidebar {
+                left: 10px;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="social-sidebar">
+        <a href="https://www.instagram.com/loooop.eg?utm_source=qr&igsh=aGR4c3U1Z2hpM3Jh" target="_blank"
+            class="social-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@loooop.eg?_r=1&_t=ZS-94O9xkbcthk" target="_blank" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li class="logo-item">
+                <a href="index.html">
+                    <img src="eeee5e561012-ee9d-4528-bac0-f3a2e20f7143.jpg" alt="LOOP Logo" class="main-logo">
+                </a>
+            </li>
+            <li><a href="index.html">home</a></li>
+            <li><a href="cart.html">your cart</a></li>
+            <li><a href="summer.html">Summer Collection</a></li>
+            <li><a href="winter.html">Winter Collection</a></li>
+        </ul>
+    </nav>
+    <div class="announcement-bar">
+        <div class="scrolling-text">
+            WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS WAIT FOR THE SUMMER COLLECTION &nbsp; ✦ &nbsp; UNLIMITED
+            DISCOUNTS &nbsp; ✦ &nbsp; WAIT FOR THE SUMMER
+            COLLECTION &nbsp; ✦ &nbsp; UNLIMITED DISCOUNTS
+        </div>
+    </div>
+    <section class="hero-banner">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: url('77777e54da8de-0c50-4027-b748-55fc4add8546.jpg');">
+            </div>
+            <div class="slide" style="background-image: url(' 6c54449d-616b-4937-9008-f0950714ddb4.jpg');"></div>
+            <div class="slide" style="background-image: url(' a1f52abb-f542-4b10-be96-8d0d8af37b43.jpg');"></div>
+        </div>
+
+        <div class="hero-content">
+            <span class="season-tag">FW '25/26</span>
+            <div class="hero-text">
+                <h1>WINTER '25<br>EDITION</h1>
+                <!-- <a href="shop.html" class="discover-btn"> -->
+                Best seller <span>&larr;</span>
+                </a>
+            </div>
+
+            <div class="slider-dots main-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-carousel-section">
+        <!-- <div class="carousel-header">
+            <h2 class="section-title">الأكثر مبيعاً</h2>
+            <a href="#" class="view-all-link">عرض الكل</a>
+        </div> -->
+
+        <div class="products-wrapper" id="productsWrapper">
+            <a href="summer1.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="Gemini_Generated_Image_39h1sl39h1sl39h1.png" alt="Product">
+                        <span class="unisex-tag">UNISEX</span>
+                        <div class="hover-overlay">
+                            <button class="choose-btn">CHOOSE OPTIONS</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="transation">cozy crochet sweater</h3>
+                        <p class="product-price">1400 EGP <span class="discount">1800 EGP</span> </p>
+                    </div>
+                </div>
+            </a>
+            <a href="summer2.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="Gemini_Generated_Image_94l4j194l4j194l4 (1).png" alt="Product">
+                        <div class="hover-overlay">
+                            <button class="choose-btn">CHOOSE OPTIONS</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>Urban crochet sweater</h3>
+                        <p class="product-price">1400 EGP <span class="discount">1600 EGP</span></p>
+                    </div>
+                </div>
+            </a>
+            <a href="summer3.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="cf5172fc-260d-40f3-b763-3fca0aa46812.jpg" alt="Product">
+                        <span class="unisex-tag">UNISEX</span>
+                        <div class="hover-overlay">
+                            <button class="choose-btn">CHOOSE OPTIONS</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>Midnight black crochet sweater</h3>
+                        <p class="product-price">1300 EGP <span class="discount">1800 EGP</span></p>
+                    </div>
+                </div>
+            </a>
+            <a href="summer4.html" class="product-link">
+                <div class="product-item">
+                    <div class="img-box">
+                        <img src="Gemini_Generated_Image_n9czjfn9czjfn9cz.png" alt="Product">
+                        <span class="unisex-tag">UNISEX</span>
+                        <div class="hover-overlay">
+                            <button class="choose-btn">CHOOSE OPTIONS</button>
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <h3>Midnight black crochet sweater</h3>
+                        <p class="product-price">1300 EGP <span class="discount">1800 EGP</span></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
+        <div class="slider-dots product-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+
+
+</html>

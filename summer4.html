@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Midnight black crochet sweater Details - LOOP STORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Tajawal:wght@400;700&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg-dark-brown: #1a0f0a;
+            --accent-teal: #48B0AD;
+            --accent-brown: #7D4427;
+            --text-cream: #f4f1e8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark-brown);
+            color: var(--text-cream);
+            overflow-x: hidden;
+        }
+
+        .brand-header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-brown);
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 35px;
+            color: var(--accent-teal);
+            letter-spacing: 2px;
+        }
+
+        .brand-nav a {
+            text-decoration: none;
+            color: var(--text-cream);
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        .cart-icon {
+            text-decoration: none;
+            color: var(--text-cream);
+            font-size: 24px;
+        }
+
+        #cart-count {
+            background: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            font-size: 12px;
+            padding: 2px 7px;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            font-weight: bold;
+        }
+
+        .product-page {
+            display: flex;
+            height: calc(100vh - 70px);
+            flex-wrap: wrap;
+        }
+
+        /* --- تعديل تثبيت الأبعاد هنا --- */
+        .product-gallery {
+            flex: 1.2;
+            min-width: 50%;
+            background-color: #48B0AD;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* منع تمدد الحاوية */
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #mainImage {
+            /* تثبيت العرض والارتفاع كنسبة مئوية من الحاوية الأصلية */
+            width: 90%;
+            height: 90%;
+            /* الحفاظ على تناسق الصورة داخل البرواز الثابت */
+            object-fit: contain;
+            border-radius: 10px;
+            border: 1px solid var(--accent-brown);
+            /* إضافة انتقال ناعم للشفافية لمنع الوميض المزعج */
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* ---------------------------- */
+
+        .arrow {
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--accent-teal);
+            border: 1px solid var(--accent-brown);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            font-size: 20px;
+        }
+
+        .next {
+            left: 20px;
+        }
+
+        .prev {
+            right: 20px;
+        }
+
+        .product-details {
+            flex: 0.8;
+            min-width: 40%;
+            padding: 40px 5%;
+            background-image: url('fe97df0b-f081-4a4c-a264-b45532ffea62.jpg');
+            background-size: cover;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 5px rgba(255, 255, 255, 0.5);
+            color: #7D4427;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .price-tag {
+            font-size: 26px;
+            color: var(--accent-teal);
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .radio-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .radio-buttons input {
+            display: none;
+        }
+
+        .radio-buttons label {
+            background-color: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            border: 2px solid var(--accent-teal);
+            padding: 10px 25px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .radio-buttons input:checked+label {
+            background-color: var(--accent-brown);
+            border-color: var(--accent-brown);
+            color: var(--text-cream);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .add-btn {
+            background-color: var(--accent-teal);
+            color: var(--bg-dark-brown);
+            border: none;
+            padding: 18px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--accent-brown);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .brand-name,
+        .productTitle,
+        .price-tag,
+        .ColorColor,
+        span {
+            color: #7D4427;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            50% {
+                transform: scale(1.2) rotate(-10deg);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-page {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .product-gallery {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="brand-header">
+        <h1 class="logo">LOOP</h1>
+        <nav class="brand-nav">
+            <a href="index.html">Home</a>
+            <a href="summer.html">summer</a>
+            <a href="winter.html">winter</a>
+        </nav>
+        <div class="cart-wrapper" id="cartWrapper">
+            <a href="cart.html" class="cart-icon">
+                🛒 <span id="cart-count">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="product-page">
+        <section class="product-gallery">
+            <button class="arrow next" onclick="changeImage(-1)">&#10094;</button>
+            <img id="mainImage" src="Gemini_Generated_Image_n9czjfn9czjfn9cz.png" alt="Product">
+            <button class="arrow prev" onclick="changeImage(1)">&#10095;</button>
+        </section>
+
+        <section class="product-details">
+            <span class="brand-name">WINTER COLLECTION '26</span>
+            <h2 class="productTitle" id="productTitle">Midnight black crochet sweater</h2>
+            <p class="price-tag">1300 EGP</p>
+
+            <div class="options-group">
+                <span> SIZE</span>
+                <div class="radio-buttons">
+                    <input type="radio" name="size" id="s" value="S"> <label for="s">S</label>
+                    <input type="radio" name="size" id="m" value="M"> <label for="m">M</label>
+                    <input type="radio" name="size" id="l" value="L"> <label for="l">L</label>
+                    <input type="radio" name="size" id="xl" value="XL"> <label for="xl">XL</label>
+                </div>
+            </div>
+
+            <button class="add-btn" onclick="addToMyCart()">Add to cart</button>
+        </section>
+    </main>
+
+    <script>
+        const images = ["Gemini_Generated_Image_n9czjfn9czjfn9cz.png", "Gemini_Generated_Image_r57w2er57w2er57w.png"];
+        let currentIndex = 0;
+
+        function changeImage(direction) {
+            const imgElement = document.getElementById('mainImage');
+
+            // جعل الصورة تختفي قليلاً قبل التغيير لضمان عدم حدوث قفزة بصرية
+            imgElement.style.opacity = '0';
+
+            setTimeout(() => {
+                currentIndex += direction;
+                if (currentIndex >= images.length) currentIndex = 0;
+                if (currentIndex < 0) currentIndex = images.length - 1;
+
+                imgElement.src = images[currentIndex];
+
+                // إعادة الظهور بعد التغيير
+                imgElement.onload = () => {
+                    imgElement.style.opacity = '1';
+                };
+            }, 200);
+        }
+
+        function updateCartNumber() {
+            let cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            document.getElementById('cart-count').innerText = cartItems.length;
+        }
+        updateCartNumber();
+
+        function addToMyCart() {
+            const selectedSize = document.querySelector('input[name="size"]:checked')?.value;
+            const selectedColor = document.querySelector('input[name="color"]:checked')?.value;
+
+            if (!selectedSize) {
+                alert("Please, Choose The Size First");
+                return;
+            }
+
+            const imgElement = document.getElementById('mainImage');
+            const cartIcon = document.getElementById('cartWrapper');
+            const flyingImg = imgElement.cloneNode();
+            const rect = imgElement.getBoundingClientRect();
+            const cartRect = cartIcon.getBoundingClientRect();
+
+            Object.assign(flyingImg.style, {
+                position: 'fixed',
+                top: rect.top + 'px',
+                left: rect.left + 'px',
+                width: rect.width + 'px',
+                height: rect.height + 'px',
+                zIndex: '5000',
+                transition: 'all 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)',
+                borderRadius: '10px',
+                pointerEvents: 'none',
+                objectFit: 'contain' // لضمان ثبات شكل الصورة الطائرة أيضاً
+            });
+
+            document.body.appendChild(flyingImg);
+
+            requestAnimationFrame(() => {
+                flyingImg.style.top = cartRect.top + 'px';
+                flyingImg.style.left = cartRect.left + 'px';
+                flyingImg.style.width = '20px';
+                flyingImg.style.height = '20px';
+                flyingImg.style.transform = 'rotate(720deg)';
+                flyingImg.style.opacity = '0.3';
+            });
+
+            let cartItems = JSON.parse(localStorage.getItem('myCart')) || [];
+            cartItems.push({
+                name: document.getElementById('productTitle').innerText,
+                price: "1300 EGP",
+                size: selectedSize,
+                color: selectedColor,
+                image: imgElement.src
+            });
+            localStorage.setItem('myCart', JSON.stringify(cartItems));
+
+            setTimeout(() => {
+                flyingImg.remove();
+                cartIcon.style.animation = "shake 0.5s ease";
+                updateCartNumber();
+                setTimeout(() => cartIcon.style.animation = "", 500);
+            }, 800);
+        }
+    </script>
+</body>
+
+</html>
